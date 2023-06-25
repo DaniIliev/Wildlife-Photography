@@ -23,4 +23,11 @@ router.get('/404', (req,res) => {
     res.render('404')
 })
 
+router.get('/catalog', async (req,res) => {
+    const posts = await postManager.findAll().lean()
+
+    const noAvaiblePosts = posts.length == 0 
+    
+    res.render('catalog', {posts, noAvaiblePosts})
+})
 module.exports = router
