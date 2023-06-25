@@ -25,7 +25,7 @@ const Schema = new mongoose.Schema({
         type: String, 
         required: [true, 'Description muss be required!']
     },
-    autor:{
+    author:{
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
