@@ -9,9 +9,9 @@ router.get('/create', auth.isAuthenticated, (req,res) => {
 router.post('/create', async (req,res) => {
     const author = req.user 
     const {title, keyword, location, createData, imageUrl, description} = req.body
-
+    let rating = 0 
     try{
-        await postManager.create({title, keyword, location, createData, imageUrl, description, author})
+        await postManager.create({title, keyword, location, createData, imageUrl, description, rating, author})
 
         res.redirect('/')
     }catch(err){

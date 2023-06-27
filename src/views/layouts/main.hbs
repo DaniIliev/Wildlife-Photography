@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-
-    <!-- Do not forget to change the path to the css file -->
     <link href="/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
@@ -13,9 +11,6 @@
 
 
     <div id="box">
-
-        <!-- In case of error, you should display div with class "error-container" -->
-        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
         {{#if error}}
         <div class="error-container">
             <p>{{error}}</p>
@@ -23,19 +18,22 @@
         {{/if}}
 
         <nav>
-            <!-- Do not forget to change the path to the image -->
+
             <img src="/img/logo.png" alt="logo">
 
             <ul class="menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/catalog">All Posts</a></li>
                 <!-- Logged users -->
+                {{#if isAuthenticated}}
                 <li><a href="/create">Create Post</a></li>
                 <li><a href="/user/posts">Posts of {{email-of-user}}</a></li>
                 <li><a href="/user/logout">Logout</a></li>
+                {{else}}
                 <!-- Guest users -->
                 <li><a href="/user/register">Register</a></li>
                 <li><a href="/user/login">Login</a></li>
+                {{/if}}
             </ul>
 
         </nav>

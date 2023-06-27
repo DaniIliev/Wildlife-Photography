@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const userManager = require('../manager/userManager')
+const postManager = require('../manager/postManager'))
 const secret = require('../config/secret')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -49,6 +50,12 @@ router.post('/login', async (req,res) => {
     }catch(err){
         res.render('login', {error: err.message})
     }
+})
+
+router.get('/post', async (req,res) => {
+    const posts = await postManager.findAll().lean()
+    
+    res.render('myPost')
 })
 
 router.get('/logout', (req,res) => {

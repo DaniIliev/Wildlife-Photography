@@ -33,7 +33,8 @@ const Schema = new mongoose.Schema({
         type: Array
     },
     rating:{
-        type: Array
+        type: Number,
+        required: true ,
     }
 })
 
